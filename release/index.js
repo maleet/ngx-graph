@@ -68823,6 +68823,7 @@ var graph_component_GraphComponent = /** @class */ (function (_super) {
                             return;
                         }
                         node.dimension.width = textDims.width + 20;
+                        node.dimension.height = Math.max(textDims.height + 10, node.dimension.height);
                     }
                     else {
                         node.dimension.width = dims.width;
