@@ -26,9 +26,9 @@ var D3ForceDirectedLayout = /** @class */ (function () {
     function D3ForceDirectedLayout() {
         this.defaultSettings = {
             force: forceSimulation()
-                .force('charge', forceManyBody().strength(-150))
-                .force('collide', forceCollide(5)),
-            forceLink: forceLink().id(function (node) { return node.id; }).distance(function () { return 100; }),
+                .force('charge', forceManyBody().strength(5))
+                .force('collide', forceCollide(100)),
+            forceLink: forceLink().id(function (node) { return node.id; }).distance(function () { return 10; }),
         };
         this.settings = {};
         this.outputGraph$ = new Subject();
@@ -50,7 +50,7 @@ var D3ForceDirectedLayout = /** @class */ (function () {
         if (this.settings.force) {
             this.settings.force.nodes(this.d3Graph.nodes)
                 .force('link', this.settings.forceLink.links(this.d3Graph.edges))
-                .alpha(0.5).restart()
+                .alpha(1).restart()
                 .on('tick', function () {
                 _this.outputGraph$.next(_this.d3GraphToOutputGraph(_this.d3Graph));
             });

@@ -52,9 +52,9 @@ export function toD3Node(maybeNode: string | D3Node): D3Node {
 export class D3ForceDirectedLayout implements Layout {
   defaultSettings: D3ForceDirectedSettings = {
     force: forceSimulation<any>()
-    .force('charge', forceManyBody().strength(-150))
-    .force('collide', forceCollide(5)),
-    forceLink: forceLink<any, any>().id(node => node.id).distance(() => 100),
+    .force('charge', forceManyBody().strength(5))
+    .force('collide', forceCollide(100)),
+    forceLink: forceLink<any, any>().id(node => node.id).distance(() => 10),
   };
   settings: D3ForceDirectedSettings = {};
 
@@ -81,7 +81,7 @@ export class D3ForceDirectedLayout implements Layout {
     if(this.settings.force) {
       this.settings.force.nodes(this.d3Graph.nodes)
         .force('link', this.settings.forceLink.links(this.d3Graph.edges))
-        .alpha(0.5).restart()
+        .alpha(1).restart()
         .on('tick', () => {
           this.outputGraph$.next(this.d3GraphToOutputGraph(this.d3Graph));
         });

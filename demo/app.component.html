@@ -19,9 +19,41 @@
         </ng-template>
 
         <ng-template #nodeTemplate let-node>
-          <svg:g class="node" ngx-tooltip [tooltipPlacement]="'top'" [tooltipType]="'tooltip'" [tooltipTemplate]="tooltipContentTemplate" [tooltipContext]="node">
+          <svg:g class="node">
             <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" [attr.fill]="node.data.color" />
-            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">{{node.label}}</svg:text>
+            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
+            </svg:text>
+            <foreignObject x="20" y="20" width="660" height="360">
+              <xhtml:body xmlns="http://www.w3.org/1999/xhtml">
+              <xhtml:table>
+                <xhtml:tr>
+                  <xhtml:td>
+                    <xhtml:div xmlns="http://www.w3.org/1999/xhtml">
+                      {{node.label}}
+                    </xhtml:div>
+                  </xhtml:td>
+                  <xhtml:td>
+                    <xhtml:div xmlns="http://www.w3.org/1999/xhtml">
+                      {{node.label}}
+                    </xhtml:div>
+                  </xhtml:td>
+                </xhtml:tr>
+                <xhtml:tr>
+                  <xhtml:td>
+                    <xhtml:div xmlns="http://www.w3.org/1999/xhtml">
+                      {{node.label}}
+                    </xhtml:div>
+                  </xhtml:td>
+                  <xhtml:td>
+                    <xhtml:div xmlns="http://www.w3.org/1999/xhtml">
+                      {{node.label}}
+                    </xhtml:div>
+                  </xhtml:td>
+                </xhtml:tr>
+              </xhtml:table>
+              </xhtml:body>
+
+            </foreignObject>
           </svg:g>
         </ng-template>
 
@@ -39,7 +71,7 @@
 
       </ngx-graph>
       <ng-template #tooltipContentTemplate let-node="model">
-        Content: {{node | json}}
+        <div *ngIf="false">Content: {{node | json}}</div>
 
       </ng-template>
     </div>

@@ -351,10 +351,10 @@ var GraphComponent = /** @class */ (function (_super) {
                 }
                 else {
                     // calculate the width
-                    if (nativeElement.getElementsByTagName('text').length) {
+                    if (nativeElement.getElementsByTagName('g').length) {
                         var textDims = void 0;
                         try {
-                            textDims = nativeElement.getElementsByTagName('text')[0].getBBox();
+                            textDims = nativeElement.getElementsByTagName('g')[0].getBBox();
                         }
                         catch (ex) {
                             // Skip drawing if element is not displayed - Firefox would throw an error here

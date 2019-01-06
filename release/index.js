@@ -68813,10 +68813,10 @@ var graph_component_GraphComponent = /** @class */ (function (_super) {
                 }
                 else {
                     // calculate the width
-                    if (nativeElement.getElementsByTagName('text').length) {
+                    if (nativeElement.getElementsByTagName('g').length) {
                         var textDims = void 0;
                         try {
-                            textDims = nativeElement.getElementsByTagName('text')[0].getBBox();
+                            textDims = nativeElement.getElementsByTagName('g')[0].getBBox();
                         }
                         catch (ex) {
                             // Skip drawing if element is not displayed - Firefox would throw an error here
@@ -69840,9 +69840,9 @@ var d3ForceDirected_D3ForceDirectedLayout = /** @class */ (function () {
     function D3ForceDirectedLayout() {
         this.defaultSettings = {
             force: Object(external__d3_force_["forceSimulation"])()
-                .force('charge', Object(external__d3_force_["forceManyBody"])().strength(-150))
-                .force('collide', Object(external__d3_force_["forceCollide"])(5)),
-            forceLink: Object(external__d3_force_["forceLink"])().id(function (node) { return node.id; }).distance(function () { return 100; }),
+                .force('charge', Object(external__d3_force_["forceManyBody"])().strength(5))
+                .force('collide', Object(external__d3_force_["forceCollide"])(100)),
+            forceLink: Object(external__d3_force_["forceLink"])().id(function (node) { return node.id; }).distance(function () { return 10; }),
         };
         this.settings = {};
         this.outputGraph$ = new external__rxjs_["Subject"]();
@@ -69864,7 +69864,7 @@ var d3ForceDirected_D3ForceDirectedLayout = /** @class */ (function () {
         if (this.settings.force) {
             this.settings.force.nodes(this.d3Graph.nodes)
                 .force('link', this.settings.forceLink.links(this.d3Graph.edges))
-                .alpha(0.5).restart()
+                .alpha(1).restart()
                 .on('tick', function () {
                 _this.outputGraph$.next(_this.d3GraphToOutputGraph(_this.d3Graph));
             });
@@ -69946,10 +69946,17 @@ var d3ForceDirected_D3ForceDirectedLayout = /** @class */ (function () {
 
 // CONCATENATED MODULE: ./src/index.ts
 /* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "NgxGraphModule", function() { return ngx_graph_module_NgxGraphModule; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "GraphComponent", function() { return graph_component_GraphComponent; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "GraphComponent", function() { return graph_component_GraphComponent; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "GraphModule", function() { return graph_module_GraphModule; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "MouseWheelDirective", function() { return mouse_wheel_directive_MouseWheelDirective; });
 /* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "toNode", function() { return toNode; });
 /* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ColaForceDirectedLayout", function() { return colaForceDirected_ColaForceDirectedLayout; });
 /* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "toD3Node", function() { return toD3Node; });
 /* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "D3ForceDirectedLayout", function() { return d3ForceDirected_D3ForceDirectedLayout; });
+
+
+
 
 
 
